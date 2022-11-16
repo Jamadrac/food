@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+    <title>PHPJabbers.com | order confirmation</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/font-awesome.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+    </head>
+    
+    <body>
+    
+    <div class="container mb-5">
+        <P>
+
+
+        </P>
+        <div class="row justify-content-center mt-1">
+            <div class="col-md-5 col-sm-12 p-4 text-center">
+                
+                <h1>CHOOSE YOUR PAYEMENT METHOD</h1>
+                <p>after paying a message will be sent to confirn</p>
+                <h0.5>keep your transaction mail or sms safe</0.5>
+                <a href="{% url 'index' %}">Go to the homepage</a>
+            </div>
+        </div>
+    
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-5 col-sm-12 text-center">
+                <h3 class="pb-3">Order Summary:</h3>
+                {% for item in items.all %}
+                    <p>{{ item.name }} <span class="pl-3">{{ item.price }}</span></p>
+                {% endfor %}
+    
+                <p class="font-weight-bold pt-4">Total: {{ price }}</p>
+            </div>
+        </div>
+        <div class="row justify-content-center pb-2 pt-5">
+            <div class="col-md-6 text-center">
+                <h3>Pay Now or Pay With Cash At Delivery</h3>
+            </div>
+        </div>
+        <div class="row justify-content-center pb-5">
+            <div class="col-md-6 text-center">
+                <div id="paypal-button"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script>
+      function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+    
+      paypal.Button.render({
+        // Configure environment
+        env: 'sandbox',
+        client: {
+          sandbox: 'ATf0mGB3vK4K0ruj9oujCFC_YSC_2W-PmNuNYNdcqdixOKmz7mic_Wadms0Ua7d7X9T4sl9phxJwwgIh',
+          production: 'demo_production_client_id'
+        },
+        // Customize button (optional)
+        locale: 'en_US',
+        style: {
+          size: 'large',
+          color: 'blue',
+          shape: 'rect',
+        },
+    
+        // Enable Pay Now checkout flow (optional)
+        commit: true,
+    
+        // Set up a payment
+        payment: function(data, actions) {
+          return actions.payment.create({
+            transactions: [{
+              amount: {
+                total: '{{ price }}',
+                currency: 'USD'
+              }
+            }]
+          });
+        },
+        // Execute the payment
+        onAuthorize: function(data, actions) {
+          return actions.payment.execute().then(function() {
+            // Show a confirmation message to the buyer
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'order-confirmation' pk %}",
+                beforeSend: function(request) {
+                    request.setRequestHeader('X-CSRFToken', csrftoken)
+                },
+                data: JSON.stringify({'isPaid': true}),
+                success: function(data) {
+                    window.location.href = '/payment-confirmation/'
+                }
+            })
+          });
+        }
+      }, '#paypal-button');
+    
+    </script>
+
+    
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        Copyright © 2020 Company Name
+                        
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="{% static 'assets/js/jquery-2.1.0.min.js' %}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'assets/js/popper.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugins -->
+    <script src="{% static 'assets/js/scrollreveal.min.js' %}"></script>
+    <script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'assets/js/imgfix.min.js' %}"></script> 
+    <script src="{% static 'assets/js/mixitup.js' %}"></script> 
+    <script src="{% static 'assets/js/accordions.js' %}"></script>
+    
+    <!-- Global Init -->
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+
+  </body>
+</html>
