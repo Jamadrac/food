@@ -36,6 +36,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'customer',
     'restaurant',
 
@@ -57,6 +58,8 @@ SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -134,12 +137,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static','static_root','media')
-MEDIA_URL = '/media/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATIC_ROOT = os.path.join(BASE_DIR, "live-static-files", "static-root")
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static','static_root','media')
+MEDIA_URL = '/media/'
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
