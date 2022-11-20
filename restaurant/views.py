@@ -3,9 +3,11 @@ from django.views import View
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.utils.timezone import datetime
 from customer.models import OrderModel
+from django.views.decorators.csrf import csrf_exempt
 
 
 class Dashboard(LoginRequiredMixin, View):
+    @csrf_exempt
     def get(self, request, *args, **kwargs):
         # get the current date
         today = datetime.today()
