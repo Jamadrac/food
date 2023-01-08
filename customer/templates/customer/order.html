@@ -106,33 +106,74 @@ Author URL: http://w3layouts.com
 
 
 <style>
-  .card.selected {
-    background-color: orange;
+  .menu-item-card {
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .menu-item-card.selected {
+    background-color: yellow;
+  }
+  .menu-item-card img {
+    width: 100%;
+    height: auto;
   }
 </style>
 
-{% for app in MenuItem %}
-  <div class="card" onclick="document.getElementById('app-{{ app.pk }}').click(); this.classList.toggle('selected')">
-    <label for="app-{{ app.pk }}">
-      <div class="row mt-4">
-        <div class="col-md-2 col-sm-12">
-          <img class="rounded" src="{% static '{{ app.image.url }}' %}" width="150" height="100"/>
-        </div>
-        <div class="col-md-8 col-sm-12">
-          <div class="d-flex flex-row">
-            <div class="form-group form-check">
-              <input type="checkbox" name="items[]" id="app-{{ app.pk }}" class="form-check-input" value="{{ app.pk }}" style="display: none;">
-              <label class="form-check-label" for="app-{{ app.pk }}">{{ app.name }}</label>
-            </div>
-            <p class="font-weight-bold pl-5">{{ app.price }}</p>
-          </div>
-          <p>{{ app.description }}</p>
-        </div>
-      </div>
-    </label>
+<h1>Place an Order</h1>
+
+<form method="post" action="{% url 'order' %}">
+  {% csrf_token %}
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
   </div>
-  <hr />
-{% endfor %}
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+  <div>
+    <label for="street">Street Address:</label>
+    <input type="text" id="street" name="street" required>
+  </div>
+  <div>
+    <label for="city">City:</label>
+    <input type="text" id="city" name="city" required>
+  </div>
+  <div>
+    <label for="state">State:</label>
+    <input type="text" id="state" name="state" required>
+  </div>
+  <div>
+    <label for="phone_num">Phone Number:</label>
+    <input type="text" id="phone_num" name="phone_num" required>
+  </div>
+  <h2>Menu Items:</h2>
+  <div id="menu-items">
+    {% for item in MenuItems %}
+      <div class="menu-item-card" data-item-id="{{ item.pk }}">
+        <input type="checkbox" name="items[]" value="{{ item.pk }}" style="display: none;">
+        {% if item.image %}
+          <img src="{{ item.image.url }}" alt="{{ item.name }}">
+        {% endif %}
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.price }}</p>
+      </div>
+    {% endfor %}
+  </div>
+  <input type="submit" value="Place Order">
+</form>
+
+<script>
+  const menuItemCards = document.querySelectorAll('.menu-item-card');
+  for (const menuItemCard of menuItemCards) {
+    menuItemCard.addEventListener('click', function(event) {
+      const checkbox = event.currentTarget.querySelector('input[type="checkbox"]');
+      checkbox.checked = !checkbox.checked
 
 
 <p>xxxxxxxxxxxxxxxxxxxxxxxxxxx</p>

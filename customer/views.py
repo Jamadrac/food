@@ -25,7 +25,7 @@ class Order(View):
 
         # pass into context
         context = {
-            'MenuItem': MenuItems,
+            'MenuItems': MenuItems,
         }
 
         # render the template
