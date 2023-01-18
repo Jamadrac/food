@@ -3,6 +3,7 @@ Author: W3layouts
 Author URL: http://w3layouts.com
 -->
 <!doctype html>
+{% load static %}
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -14,7 +15,7 @@ Author URL: http://w3layouts.com
     <link href="//fonts.googleapis.com/css?family=Mukta:300,400,500" rel="stylesheet">
 
     <!-- Template CSS -->
-    <link rel="stylesheet" href="assets/css/style-starter.css">
+    <link rel="stylesheet" href="{% static 'assets/css/style-starter.css' %}">
   </head>
   <body>
 <!--header-->
@@ -26,7 +27,7 @@ Author URL: http://w3layouts.com
               </a></h1>
           <!-- if logo is image enable this   
   <a class="navbar-brand" href="#index.html">
-      <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+      <img src="{% static 'image-path' %}" alt="Your logo" title="Your logo" style="height:35px;" />
   </a> -->
           <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
               data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
@@ -183,13 +184,13 @@ Author URL: http://w3layouts.com
             <div class="col-lg-8">
                 <div class="row">
                     <div class="col-md-4 col-6 left-wthree-img mt-lg-0 mt-5">
-                        <img src="assets/images/a1.jpg" alt="" class="img-fluid radius-image">
+                        <img src="{% static 'assets/images/a1.jpg' %}" alt="" class="img-fluid radius-image">
                     </div>
                     <div class="col-md-4 col-6 left-wthree-img mt-lg-0 mt-5">
-                        <img src="assets/images/a2.jpg" alt="" class="img-fluid radius-image">
+                        <img src="{% static 'assets/images/a2.jpg' %}" alt="" class="img-fluid radius-image">
                     </div>
                     <div class="col-md-4 col-6 left-wthree-img mt-lg-0 mt-md-5 mt-4">
-                        <img src="assets/images/a3.jpg" alt="" class="img-fluid radius-image">
+                        <img src="{% static 'assets/images/a3.jpg' %}" alt="" class="img-fluid radius-image">
                     </div>
                 </div>
             </div>
@@ -204,21 +205,21 @@ Author URL: http://w3layouts.com
             <h3 class="title-big text-center mb-md-5 mb-4">Our Products</h3>
             <div class="fea-gd-vv text-center row">
                 <div class="float-top col-lg-4 col-md-6">
-                    <a href="#url"><img src="assets/images/1.jpg" class="img-responsive" alt=""></a>
+                    <a href="#url"><img src="{% static 'assets/images/1.jpg' %}" class="img-responsive" alt=""></a>
                     <div class="float-lt feature-gd">
                         <h3><a href="#url">Espresso Americano</a> </h3>
                         <p> Consectetur elit, sed do eiusmod tempor sed et dolor init</p>
                     </div>
                 </div>
                 <div class="float-top col-lg-4 col-md-6 mt-md-0 mt-5">
-                    <a href="#url"><img src="assets/images/2.jpg" class="img-responsive" alt=""></a>
+                    <a href="#url"><img src="{% static 'assets/images/2.jpg' %}" class="img-responsive" alt=""></a>
                     <div class="float-lt feature-gd">
                         <h3><a href="#url">Cappuccino coffee</a> </h3>
                         <p> Consectetur elit, sed do eiusmod tempor sed et dolor init</p>
                     </div>
                 </div>
                 <div class="float-top col-lg-4 col-md-6 mt-lg-0 mt-5">
-                    <a href="#url"><img src="assets/images/3.jpg" class="img-responsive" alt=""></a>
+                    <a href="#url"><img src="{% static 'assets/images/3.jpg' %}" class="img-responsive" alt=""></a>
                     <div class="float-lt feature-gd">
                         <h3><a href="#url">Cold brew coffee</a> </h3>
                         <p> Consectetur elit, sed do eiusmod tempor sed et dolor init</p>
@@ -290,8 +291,8 @@ Author URL: http://w3layouts.com
             <ul class="gallery_agile">
                 <li>
                     <div class="w3_agile_portfolio_grid">
-                        <a href="assets/images/blog1.jpg">
-                            <img src="assets/images/blog1.jpg" alt=" " class="img-fluid radius-image" />
+                        <a href="{% static 'assets/images/blog1.jpg' %}">
+                            <img src="{% static 'assets/images/blog1.jpg' %}" alt=" " class="img-fluid radius-image" />
                             <div class="w3layouts_news_grid_pos">
                                 <div class="wthree_text">
                                     <h3>Perfect Cup</h3>
@@ -303,8 +304,8 @@ Author URL: http://w3layouts.com
                 </li>
                 <li>
                     <div class="w3_agile_portfolio_grid">
-                        <a href="assets/images/blog2.jpg">
-                            <img src="assets/images/blog2.jpg" alt=" " class="img-fluid radius-image" />
+                        <a href="{% static 'assets/images/blog2.jpg' %}">
+                            <img src="{% static 'assets/images/blog2.jpg' %}" alt=" " class="img-fluid radius-image" />
                             <div class="w3layouts_news_grid_pos">
                                 <div class="wthree_text">
                                     <h3>Baked Beans</h3>
@@ -316,8 +317,8 @@ Author URL: http://w3layouts.com
                 </li>
                 <li>
                     <div class="w3_agile_portfolio_grid">
-                        <a href="assets/images/blog3.jpg">
-                            <img src="assets/images/blog3.jpg" alt=" " class="img-fluid radius-image" />
+                        <a href="{% static 'assets/images/blog3.jpg' %}">
+                            <img src="{% static 'assets/images/blog3.jpg' %}" alt=" " class="img-fluid radius-image" />
                             <div class="w3layouts_news_grid_pos">
                                 <div class="wthree_text">
                                     <h3>Mocha</h3>
@@ -330,8 +331,8 @@ Author URL: http://w3layouts.com
 
                 <li>
                     <div class="w3_agile_portfolio_grid">
-                        <a href="assets/images/blog4.jpg">
-                            <img src="assets/images/blog4.jpg" alt=" " class="img-fluid radius-image" />
+                        <a href="{% static 'assets/images/blog4.jpg' %}">
+                            <img src="{% static 'assets/images/blog4.jpg' %}" alt=" " class="img-fluid radius-image" />
                             <div class="w3layouts_news_grid_pos">
                                 <div class="wthree_text">
                                     <h3>Cappuccino</h3>
@@ -343,8 +344,8 @@ Author URL: http://w3layouts.com
                 </li>
                 <li>
                     <div class="w3_agile_portfolio_grid">
-                        <a href="assets/images/blog5.jpg">
-                            <img src="assets/images/blog5.jpg" alt=" " class="img-fluid radius-image" />
+                        <a href="{% static 'assets/images/blog5.jpg' %}">
+                            <img src="{% static 'assets/images/blog5.jpg' %}" alt=" " class="img-fluid radius-image" />
                             <div class="w3layouts_news_grid_pos">
                                 <div class="wthree_text">
                                     <h3>Macchiatio</h3>
@@ -356,8 +357,8 @@ Author URL: http://w3layouts.com
                 </li>
                 <li>
                     <div class="w3_agile_portfolio_grid">
-                        <a href="assets/images/blog6.jpg">
-                            <img src="assets/images/blog6.jpg" alt=" " class="img-fluid radius-image" />
+                        <a href="{% static 'assets/images/blog6.jpg' %}">
+                            <img src="{% static 'assets/images/blog6.jpg' %}" alt=" " class="img-fluid radius-image" />
                             <div class="w3layouts_news_grid_pos">
                                 <div class="wthree_text">
                                     <h3>Coffee Cup</h3>
@@ -369,8 +370,8 @@ Author URL: http://w3layouts.com
                 </li>
                 <li>
                     <div class="w3_agile_portfolio_grid">
-                        <a href="assets/images/blog1.jpg">
-                            <img src="assets/images/blog1.jpg" alt=" " class="img-fluid radius-image" />
+                        <a href="{% static 'assets/images/blog1.jpg' %}">
+                            <img src="{% static 'assets/images/blog1.jpg' %}" alt=" " class="img-fluid radius-image" />
                             <div class="w3layouts_news_grid_pos">
                                 <div class="wthree_text">
                                     <h3>Filtered Coffee</h3>
@@ -382,8 +383,8 @@ Author URL: http://w3layouts.com
                 </li>
                 <li>
                     <div class="w3_agile_portfolio_grid">
-                        <a href="assets/images/blog2.jpg">
-                            <img src="assets/images/blog2.jpg" alt=" " class="img-fluid radius-image" />
+                        <a href="{% static 'assets/images/blog2.jpg' %}">
+                            <img src="{% static 'assets/images/blog2.jpg' %}" alt=" " class="img-fluid radius-image" />
                             <div class="w3layouts_news_grid_pos">
                                 <div class="wthree_text">
                                     <h3> Cappuccino</h3>
@@ -414,7 +415,7 @@ Author URL: http://w3layouts.com
                         <div class="testimonial-content">
                             <div class="testimonial">
                                 <div class="test-img">
-                                    <img src="assets/images/team1.jpg" class="img-fluid"
+                                    <img src="{% static 'assets/images/team1.jpg' %}" class="img-fluid"
                                         alt="client-img">
                                 </div>
                                 <div class="testi-des">
@@ -440,7 +441,7 @@ Author URL: http://w3layouts.com
                     <div class="item">
                         <div class="testimonial-content">
                             <div class="testimonial">
-                                <div class="test-img"><img src="assets/images/team2.jpg" class="img-fluid"
+                                <div class="test-img"><img src="{% static 'assets/images/team2.jpg' %}" class="img-fluid"
                                         alt="client-img">
                                 </div>
                                 <div class="testi-des">
@@ -466,7 +467,7 @@ Author URL: http://w3layouts.com
                     <div class="item">
                         <div class="testimonial-content">
                             <div class="testimonial">
-                                <div class="test-img"><img src="assets/images/team3.jpg" class="img-fluid"
+                                <div class="test-img"><img src="{% static 'assets/images/team3.jpg' %}" class="img-fluid"
                                         alt="client-img">
                                 </div>
                                 <div class="testi-des">
@@ -492,7 +493,7 @@ Author URL: http://w3layouts.com
                     <div class="item">
                         <div class="testimonial-content">
                             <div class="testimonial">
-                                <div class="test-img"><img src="assets/images/team4.jpg" class="img-fluid"
+                                <div class="test-img"><img src="{% static 'assets/images/team4.jpg' %}" class="img-fluid"
                                         alt="client-img">
                                 </div>
                                 <div class="testi-des">
@@ -535,7 +536,7 @@ Author URL: http://w3layouts.com
                             <div class="card">
                                 <div class="card-header p-0 position-relative">
                                     <a href="#blog-single" class="zoom d-block">
-                                        <img class="card-img-bottom d-block" src="assets/images/blog1.jpg"
+                                        <img class="card-img-bottom d-block" src="{% static 'assets/images/blog1.jpg' %}"
                                             alt="Card image cap">
                                     </a>
                                 </div>
@@ -569,7 +570,7 @@ Author URL: http://w3layouts.com
                             <div class="card">
                                 <div class="card-header p-0 position-relative">
                                     <a href="#blog-single" class="zoom d-block">
-                                        <img class="card-img-bottom d-block" src="assets/images/blog4.jpg"
+                                        <img class="card-img-bottom d-block" src="{% static 'assets/images/blog4.jpg' %}"
                                             alt="Card image cap">
                                     </a>
                                     <div class="course-price-badge"> Free</div>
@@ -604,7 +605,7 @@ Author URL: http://w3layouts.com
                             <div class="card">
                                 <div class="card-header p-0 position-relative">
                                     <a href="#blog-single" class="zoom d-block">
-                                        <img class="card-img-bottom d-block" src="assets/images/blog3.jpg"
+                                        <img class="card-img-bottom d-block" src="{% static 'assets/images/blog3.jpg' %}"
                                             alt="Card image cap">
                                     </a>
                                     <div class="course-price-badge-new"> New</div>
@@ -639,7 +640,7 @@ Author URL: http://w3layouts.com
                             <div class="card">
                                 <div class="card-header p-0 position-relative">
                                     <a href="#blog-single" class="zoom d-block">
-                                        <img class="card-img-bottom d-block" src="assets/images/blog2.jpg"
+                                        <img class="card-img-bottom d-block" src="{% static 'assets/images/blog2.jpg' %}"
                                             alt="Card image cap">
                                     </a>
                                 </div>
@@ -672,7 +673,7 @@ Author URL: http://w3layouts.com
                             <div class="card">
                                 <div class="card-header p-0 position-relative">
                                     <a href="#blog-single" class="zoom d-block">
-                                        <img class="card-img-bottom d-block" src="assets/images/blog5.jpg"
+                                        <img class="card-img-bottom d-block" src="{% static 'assets/images/blog5.jpg' %}"
                                             alt="Card image cap">
                                     </a>
                                 </div>
@@ -705,7 +706,7 @@ Author URL: http://w3layouts.com
                             <div class="card">
                                 <div class="card-header p-0 position-relative">
                                     <a href="#blog-single" class="zoom d-block">
-                                        <img class="card-img-bottom d-block" src="assets/images/blog6.jpg"
+                                        <img class="card-img-bottom d-block" src="{% static 'assets/images/blog6.jpg' %}"
                                             alt="Card image cap">
                                     </a>
                                 </div>
@@ -820,13 +821,13 @@ Author URL: http://w3layouts.com
 </section>
 
 <!-- Template JavaScript -->
-<script src="assets/js/jquery-3.3.1.min.js"></script>
+<script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
 
-<script src="assets/js/theme-change.js"></script>
+<script src="{% static 'assets/js/theme-change.js' %}"></script>
 
 <!-- js for portfolio lightbox -->
-<script src="assets/js/jquery-2.1.4.min.js"></script>
-<script src="assets/js/jquery.chocolat.js "></script>
+<script src="{% static 'assets/js/jquery-2.1.4.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.chocolat.js ' %}"></script>
 <!--light-box-files -->
 <script type="text/javascript ">
   $(function () {
@@ -835,7 +836,7 @@ Author URL: http://w3layouts.com
 </script>
 <!-- /js for portfolio lightbox -->
 
-<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
 <script>
   $(document).ready(function () {
     $('.popup-with-zoom-anim').magnificPopup({
@@ -939,7 +940,7 @@ Author URL: http://w3layouts.com
 </script>
 <!-- //script for blog slider -->
 
-<script src="assets/js/owl.carousel.js"></script>
+<script src="{% static 'assets/js/owl.carousel.js' %}"></script>
 
 <!-- script for banner slider-->
 <script>
@@ -1016,7 +1017,7 @@ Author URL: http://w3layouts.com
 </script>
 <!--//MENU-JS-->
 
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
 </body>
 
 </html>
