@@ -15,6 +15,15 @@ Author URL: http://w3layouts.com
     <link href="//fonts.googleapis.com/css?family=Mukta:300,400,500" rel="stylesheet">
 
     <!-- Template CSS -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
     <link rel="stylesheet" href="{% static 'assets/css/style-starter.css' %}">
   </head>
   <body>
@@ -102,189 +111,176 @@ Author URL: http://w3layouts.com
         </div>
     </div>
 </section>
-<section class="w3l-servicesblock py-5" id="about">
-    <div class="container py-lg-5 py-md-4 py-2">
-        <div class="row">
-            <div class="col-lg-8 about-right-faq align-self">
-                <span class="title-small mb-2">Heart of USA's Best</span>
-                <h3 class="title-big mx-0"> What we're all about</h3>
-                <p class="mt-lg-4 mt-3">We have 25+ years of experience."Our only Aim, Happy Customers. At the end of the day, it all comes down to coffee. But to get there it takes a
-                    dedicated, knowledgeable team with a sustainable approach.
-                    We make the delicious coffee for the coffee lovers. We are a team of dedicated
-                    coffee fans who celebrate exceptional coffee brands. We provide a variety of services both to our new and regular customers.
-                    All your favourites, delivered straight to you. </p>
-                <a class="btn btn-style btn-primary mt-lg-5 mt-4" href="about.html"> Learn More about us</a>
-            </div>
-            <div class="col-lg-4 mt-lg-0 mt-5">
-                <img src="{% static 'assets/images/about.jpg' %}" alt="" class="img-fluid radius-image">
-            </div>
-        </div>
-    </div>
-</section>
-<section class="w3l-specification-6 py-5">
-    <!-- /specification-6-->
-    <div class="specification-6-mian py-lg-5 py-md-4 py-2">
-        <div class="container">
-            <div class="align-counter-6-inf-cols row">
-                <div class="counter-6-inf-left col-lg-6">
-                    
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+<div class="container mb-5">
+  <div class="row justify-content-center mt-1">
+      <div class="col-md-12 col-sm-12 p-4">
+          <form method="POST">
+              {% csrf_token %}
+              <div class="pt-5">
+                  {% for app in appetizers %}
+                  <div class="row">
+                      <div class="col-md-2 col-sm-12">
+                          <img class="rounded" src="{{ app.image.url }}" width="150" height="100"/>
+                      </div>
+                      <div class="col-md-8 col-sm-12">
+                          <div class="d-flex flex-row">
+                              <div class="form-group form-check">
+                                  <input type="checkbox" name="items[]" class="form-check-input" value="{{ app.pk }}">
+                                  <label class="form-check-label">{{ app.name }}</label>
+                              </div>
+                              <p class="font-weight-bold pl-5">{{ app.price }}</p>
+                          </div>
+                          <p>{{ app.description }}</p>
+                      </div>
+                  </div>
+                  <hr />
+              {% endfor %}
+              </div>
+
+              <div class="pt-5">
+                  {% for entre in entres %}
+                  <div class="row mt-4">
+                      <div class="col-md-2 col-sm-12">
+                          <img class="rounded" src="{{ entre.image.url }}" width="150" height="100"/>
+                      </div>
+                      <div class="col-md-8 col-sm-12">
+                          <div class="d-flex flex-row">
+                              <div class="form-group form-check">
+                                  <input type="checkbox" name="items[]" class="form-check-input" value="{{ entre.pk }}">
+                                  <label class="form-check-label">{{ entre.name }}</label>
+                              </div>
+                              <p class="font-weight-bold pl-5">{{ entre.price }}</p>
+                          </div>
+                          <p>{{ entre.description }}</p>
+                      </div>
+                  </div>
+                  <hr />
+                  {% endfor %}
+              </div>
+
+              <div class="pt-5">
+                  {% for dessert in desserts %}
+                  <div class="row mt-4">
+                      <div class="col-md-2 col-sm-12">
+                          <img class="rounded" src="{{ dessert.image.url }}" width="150" height="100"/>
+                      </div>
+                      <div class="col-md-8 col-sm-12">
+                          <div class="d-flex flex-row">
+                              <div class="form-group form-check">
+                                  <input type="checkbox" name="items[]" class="form-check-input" value="{{ dessert.pk }}">
+                                  <label class="form-check-label">{{ dessert.name }}</label>
+                              </div>
+                              <p class="font-weight-bold pl-5">{{ dessert.price }}</p>
+                          </div>
+                          <p>{{ dessert.description }}</p>
+                      </div>
+                  </div>
+                  <hr />
+                  {% endfor %}
+              </div>
+
+              <div class="pt-5">
+                  {% for drink in drinks %}
+                  <div class="row mt-4">
+                      <div class="col-md-2 col-sm-12">
+                          <img class="rounded" src="{{ drink.image.url }}" width="150" height="100"/>
+                      </div>
+                      <div class="col-md-8 col-sm-12">
+                          <div class="d-flex flex-row">
+                              <div class="form-group form-check">
+                                  <input type="checkbox" name="items[]" class="form-check-input" value="{{ drink.pk }}">
+                                  <label class="form-check-label">{{ drink.name }}</label>
+                              </div>
+                              <p class="font-weight-bold pl-5">{{ drink.price }}</p>
+                          </div>
+                          <p>{{ drink.description }}</p>
+                      </div>
+                  </div>
+                  <hr />
+                  {% endfor %}
+              </div>
+
+              <div class="form-group pt-3">
+                  <label for="name">Full Name</label>
+                  <input required class="form-control" type="text" placeholder="Your Name" name="name" />
+              </div>
+
+              <div class="form-group pt-3">
+                  <label for="name">Email Address</label>
+                  <input required class="form-control" type="text" placeholder="example@company.com" name="email" />
+              </div>
+
+              <div class="form-group pt-3">
+                  <label for="name">Street Address</label>
+                  <input required class="form-control" type="text" placeholder="1234 Main St" name="street" />
+              </div>
+
+              <div class="row">
+                  <div class="col-md-4 col-sm-12">
+                      <div class="form-group pt-3">
+                          <label for="name">City</label>
+                          <input required class="form-control" type="text" placeholder="San Francisco" name="city" />
+                      </div>
+                  </div>
+
+                  <div class="col-md-4 col-sm-12">
+                      <div class="form-group pt-3">
+                          <label for="name">State</label>
+                          <input required class="form-control" type="text" placeholder="CA" name="state" />
+                      </div>
+                  </div>
+
+                  <div class="col-md-4 col-sm-12">
+                      <div class="form-group pt-3">
+                          <label for="name">Zip Code</label>
+                          <input required class="form-control" type="text" placeholder="94117" name="zip" />
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#submitModal">
+                Submit Order!
+              </button>
+              <!-- <button class="btn btn-dark mt-5">Place Order!</button> -->
+
+              <!-- Modal -->
+              <div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="submitModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="submitModalLabel">Submit Your Order!</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-light" data-dismiss="modal">Go Back</button>
+                      <button type="submit" class="btn btn-dark">Place Order!</button>
+                    </div>
+                  </div>
                 </div>
-                <div class="counter-6-inf-right col-lg-6">
-                    <h3 class="title-big">We provide a variety of services both to our new and regular customers.</h3>
-                    <p class="mt-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis, aliquid non? Suscipit numquam
-                        obcaecati necessitatibus voluptas. Molestias, sint atque aliquid magnam magni, fuga iste fugit
-                        iusto maiores vero soluta voluptates?</p>
-                    <a class="btn btn-style btn-primary mt-lg-5 mt-4" href="about.html"> Discover More</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- //specification-6-->
-<!-- /homeblock2-->
-<section class="w3l-homeblock2 py-5">
-    <div class="container py-lg-5 py-md-4 py-2">
-        <div class="row">
-            <div class="col-lg-4 col-md-6 grids-feature">
-                <div class="area-box">
-                    <span class="fa fa-coffee"></span>
-                    <h4><a href="#feature" class="title-head">Aroma, Taste and Flavour</a></h4>
-                    <p>Coffee has a distinctive aroma, which is easily recognizable. Ut blandit eu leo non. Duis sed
-                        dolor amet ipsum sit et init laore leo
-                        et.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 grids-feature mt-md-0 mt-5">
-                <div class="area-box">
-                    <span class="fa fa-glass"></span>
-                    <h4><a href="#feature" class="title-head">Composition of coffee</a></h4>
-                    <p>Coffee contains many minerals and vitamins and no fat. Ut blandit eu leo non. Duis sed dolor amet
-                        ipsum sit et init laore leo
-                        et.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 grids-feature mt-lg-0 mt-5">
-                <div class="area-box">
-                    <span class="fa fa-pagelines"></span>
-                    <h4><a href="#feature" class="title-head">Physcological Effects </a></h4>
-                    <p>Coffee is beneficial for your physiological condition. Ut blandit eu leo non. Duis sed dolor amet
-                        ipsum sit et init laore leo
-                        et.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- //homeblock2-->
-<!-- middle -->
-<div class="w3l-middle py-5">
-    <div class="container py-lg-5 py-md-4">
-        <div class="welcome-left">
-            <h3 class="title-small">Coffee Shop</h3>
-            <h3 class="title-big mb-4">All your favourites, delivered straight to you. Start your order</h3>
-            <p class="pr-lg-5">Because you love coffee, but don't always want the caffeine, look for the Swiss Water®
-                logo or ask how your coffee was decaffeinated. </p>
-            <div class="buttons mt-md-5 mt-4">
-                <a href="about.html" class="btn btn-style btn-primary mr-2">Find near you</a>
-            </div>
-        </div>
-    </div>
+              </div>
+
+          </form>
+      </div>
+  </div>
 </div>
-<!-- //middle -->
-<section class="w3l-team section py-5" id="team">
-    <div class="container py-lg-5 py-md-4">
-        <h5 class="title-small text-center">Our team</h5>
-        <h3 class="title-big text-center mb-md-5 mb-4">Team Members</h3>
-        <div class="row">
-            <div class="section_content teamy-team">
-                <div class="col-lg-3 col-6">
-                    <div class="teamy teamy_style1 teamy_mask-circle">
-                        <div class="teamy_layout">
-                            <div class="teamy_preview">
-                                <img src="{% static 'assets/images/team1.jpg' %}" class="radius-image img-fluid w-100" alt="The demo photo">
-                            </div>
-                            <div class="teamy_back">
-                                <div class="teamy_back-inner">
-                                    <a href="#0" class="social"> <i class="fa fa-facebook"></i> </a>
-                                    <a href="#0" class="social"> <i class="fa fa-dribbble"></i> </a>
-                                    <a href="#0" class="social"> <i class="fa fa-twitter"></i> </a>
-                                    <a href="#0" class="social"> <i class="fa fa-envelope-o"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="teamy_content">
-                            <a href="#url" class="teamy_name">Suzan Lois</a>
-                            <span class="teamy_post">Barista at coffeebean</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <div class="teamy teamy_style1 teamy_mask-circle">
-                        <div class="teamy_layout">
-                            <div class="teamy_preview">
-                                <img src="{% static 'assets/images/team2.jpg' %}" class="radius-image img-fluid w-100" alt="The demo photo">
-                            </div>
-                            <div class="teamy_back">
-                                <div class="teamy_back-inner">
-                                    <a href="#0" class="social"> <i class="fa fa-facebook"></i> </a>
-                                    <a href="#0" class="social"> <i class="fa fa-dribbble"></i> </a>
-                                    <a href="#0" class="social"> <i class="fa fa-twitter"></i> </a>
-                                    <a href="#0" class="social"> <i class="fa fa-envelope-o"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="teamy_content">
-                            <a href="#url" class="teamy_name">Dora Caelan</a>
-                            <span class="teamy_post">Barista at coffeebean</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6 mt-lg-0 mt-5">
-                    <div class="teamy teamy_style1 teamy_mask-circle">
-                        <div class="teamy_layout">
-                            <div class="teamy_preview">
-                                <img src="{% static 'assets/images/team3.jpg' %}" class="radius-image img-fluid w-100" alt="The demo photo">
-                            </div>
-                            <div class="teamy_back">
-                                <div class="teamy_back-inner">
-                                    <a href="#0" class="social"> <i class="fa fa-facebook"></i> </a>
-                                    <a href="#0" class="social"> <i class="fa fa-dribbble"></i> </a>
-                                    <a href="#0" class="social"> <i class="fa fa-twitter"></i> </a>
-                                    <a href="#0" class="social"> <i class="fa fa-envelope-o"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="teamy_content">
-                            <a href="#url" class="teamy_name">Rosanna Pattie</a>
-                            <span class="teamy_post">Barista at coffeebean</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6 mt-lg-0 mt-5">
-                    <div class="teamy teamy_style1 teamy_mask-circle">
-                        <div class="teamy_layout">
-                            <div class="teamy_preview">
-                                <img src="{% static 'assets/images/team4.jpg' %}" class="radius-image img-fluid w-100" alt="The demo photo">
-                            </div>
-                            <div class="teamy_back">
-                                <div class="teamy_back-inner">
-                                    <a href="#0" class="social"> <i class="fa fa-facebook"></i> </a>
-                                    <a href="#0" class="social"> <i class="fa fa-dribbble"></i> </a>
-                                    <a href="#0" class="social"> <i class="fa fa-twitter"></i> </a>
-                                    <a href="#0" class="social"> <i class="fa fa-envelope-o"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="teamy_content">
-                            <a href="#url" class="teamy_name">Rose Alpha</a>
-                            <span class="teamy_post">Barista at coffeebean</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxx  -->
+
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxx  -->
+
 <section class="w3l-footer-29-main">
   <div class="footer-29 py-5">
     <div class="container py-lg-4 py-sm-3">
