@@ -4,7 +4,7 @@ from django.views import View
 from django.db.models import Q
 from django.core.mail import send_mail
 from .models import MenuItem, Category, OrderModel
-
+from .MTN_api import PayClass
 
 class Index(View):
     def get(self, request, *args, **kwargs):
@@ -21,9 +21,9 @@ class Order(View):
         # get every item from each category
         appetizers = MenuItem.objects.filter(
             category__name__contains='Appetizer')
-        entres = MenuItem.objects.filter(category__name__contains='Entre')
-        desserts = MenuItem.objects.filter(category__name__contains='Dessert')
-        drinks = MenuItem.objects.filter(category__name__contains='Drink')
+        entres = MenuItem.objects.all()
+        desserts = MenuItem.objects.all()
+        drinks = MenuItem.objects.all()
 
         # pass into context
         context = {
@@ -42,7 +42,7 @@ class Order(View):
         street = request.POST.get('street')
         city = request.POST.get('city')
         state = request.POST.get('state')
-        zip_code = request.POST.get('zip')
+        phone_number = request.POST.get('phone_number')
 
         order_items = {
             'items': []
@@ -74,7 +74,7 @@ class Order(View):
             street=street,
             city=city,
             state=state,
-            zip_code=zip_code
+            phone_number=phone_number
         )
         order.items.add(*item_ids)
 
@@ -112,14 +112,24 @@ class OrderConfirmation(View):
         return render(request, 'customer/order_confirmation.html', context)
 
     def post(self, request, pk, *args, **kwargs):
-        data = json.loads(request.body)
-
-        if data['isPaid']:
+        if 'pay_btn' in request.POST:
+            # code for handling pay button functionality
             order = OrderModel.objects.get(pk=pk)
-            order.is_paid = True
-            order.save()
+            price = order.price
+            phone_number = order.phone_number
+            txt_ref = pk
+            payermessage = ('smz')
+            callpay = PayClass.momopay(price, "EUR", txt_ref, phone_number, payermessage)
+            if callpay['response'] == 202:
+                order.is_paid = True
+                order.save()
+                return render(request, 'customer/order_pay_confirmation.html', {'callpay':callpay})
+            else:
+                return render(request, 'customer/payment_error.html', {'callpay':callpay})
+        elif 'cancel_btn' in request.POST:
+            # code for handling cancel button functionality
+            return redirect('cancel-order')
 
-        return redirect('payment-confirmation')
 
 
 class OrderPayConfirmation(View):

@@ -5,7 +5,7 @@ class MenuItem(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField(upload_to='menu_images/')
-    price = models.DecimalField(max_digits=5, decimal_places=2)
+    price = models.IntegerField(blank=True, null=True)
     category = models.ManyToManyField('Category', related_name='item')
 
     def __str__(self):
@@ -29,7 +29,7 @@ class OrderModel(models.Model):
     street = models.CharField(max_length=50, blank=True)
     city = models.CharField(max_length=50, blank=True)
     state = models.CharField(max_length=15, blank=True)
-    zip_code = models.IntegerField(blank=True, null=True)
+    phone_number = models.IntegerField(blank=True, null=True)
     is_paid = models.BooleanField(default=False)
     is_shipped = models.BooleanField(default=False)
 

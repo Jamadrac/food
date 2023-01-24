@@ -106,6 +106,7 @@ class PayClass():
         # UUID V4 generator
         uuidgen = str(uuid.uuid4())
         url = ""+str(PayClass.accurl)+"/collection/v1_0/requesttopay"
+
         payload = json.dumps({
             "amount": amount,
             "currency": currency,
@@ -115,20 +116,44 @@ class PayClass():
                 "partyId": phone_number
             },
             "payerMessage": payermessage,
-            "payeeNote": "Notes"
+            "payeeNote": payermessage
         })
-
         headers = {
             'X-Reference-Id': uuidgen,
-            'Content-Type': 'application/json',
+            'X-Target-Environment': PayClass.environment_mode,
             'Ocp-Apim-Subscription-Key': PayClass.collections_subkey,
-            'Authorization': str(PayClass.basic_authorisation_collections)
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer "+str(PayClass.momotoken()["access_token"])
         }
 
         response = requests.request("POST", url, headers=headers, data=payload)
+
+        context = {"response": response.status_code, "ref": uuidgen}
+
+        return context
+
+    def verifymomo(txn):
+        url = ""+str(PayClass.accurl) + \
+            "/collection/v1_0/requesttopay/"+str(txn)+""
+
+        payload = {}
+        headers = {
+            'Ocp-Apim-Subscription-Key': PayClass.collections_subkey,
+            'Authorization':  "Bearer "+str(PayClass.momotoken()["access_token"]),
+            'X-Target-Environment': PayClass.environment_mode,
+        }
+
+        response = requests.request("GET", url, headers=headers, data=payload)
+
+        json_respon = response.json()
+
+        return json_respon
+
+'''
+        response = requests.request("POST", url, headers=headers, data=payload)
         return response
 
-
+'''
         def verifymomo(txn):
             url = ""+str(PayClass.accurl) + \
                 "/collection/v1_0/requesttopay/"+str(txn)+""
