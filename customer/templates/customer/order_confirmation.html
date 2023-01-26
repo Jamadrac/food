@@ -25,9 +25,14 @@
             <h3>Pay Now or Pay With Cash At Delivery</h3>
         </div>
     </div>
+    <!-- <button type="submit" name="pay_btn" value="pay">Pay</button>
+      <button type="submit" name="cancel_btn" value="cancel">Cancel</button> -->
     <form method="post">
       {% csrf_token %}
-      <button type="submit" name="pay_btn" value="pay">Pay</button>
+      <div class="rexbutton-container">
+        <button class="pay-airtel">Pay with Airtel</button>
+        <button class="pay-mtn" type="submit" name="pay_btn" value="pay">Pay with MTN</button>
+      </div>
       <button type="submit" name="cancel_btn" value="cancel">Cancel</button>
     </form>
         </div>
