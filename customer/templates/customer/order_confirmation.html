@@ -22,19 +22,24 @@
     </div>
     <div class="row justify-content-center pb-2 pt-5">
         <div class="col-md-6 text-center">
+            <form method="post">
+                    {% csrf_token %}
+                    <div class="rexbutton-container">
+                    <button class="pay-airtel">Pay with Airtel</button>
+                    <button class="pay-mtn" type="submit" name="pay_btn" value="pay">Pay with MTN</button>
+                    </div>
+                    <button type="submit" name="cancel_btn" value="cancel">Cancel</button>
+                </form>
+            </div>
+        </div>
+    <div class="row justify-content-center pb-2 pt-5">
+        <div class="col-md-6 text-center">
             <h3>Pay Now or Pay With Cash At Delivery</h3>
         </div>
     </div>
     <!-- <button type="submit" name="pay_btn" value="pay">Pay</button>
       <button type="submit" name="cancel_btn" value="cancel">Cancel</button> -->
-    <form method="post">
-      {% csrf_token %}
-      <div class="rexbutton-container">
-        <button class="pay-airtel">Pay with Airtel</button>
-        <button class="pay-mtn" type="submit" name="pay_btn" value="pay">Pay with MTN</button>
-      </div>
-      <button type="submit" name="cancel_btn" value="cancel">Cancel</button>
-    </form>
+    
         </div>
     </div>
 </div>
