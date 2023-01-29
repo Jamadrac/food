@@ -31,7 +31,7 @@ class Dashboard(LoginRequiredMixin, UserPassesTestMixin, View):
         return render(request, 'restaurant/dashboard.html', context)
 
     def test_func(self):
-        return self.request.user.groups.filter(name='Staff').exists()
+        return self.request.user.groups.filter(name='555').exists()
 
 
 class OrderDetails(LoginRequiredMixin, UserPassesTestMixin, View):
@@ -55,4 +55,4 @@ class OrderDetails(LoginRequiredMixin, UserPassesTestMixin, View):
         return render(request, 'restaurant/order-details.html', context)
 
     def test_func(self):
-        return self.request.user.groups.filter(name='Staff').exists()
+        return self.request.user.groups.filter(name='555').exists()
