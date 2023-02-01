@@ -31,8 +31,12 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 AUTHENTICATION_BACKENDS = [
+
     'django.contrib.auth.backends.ModelBackend',
+
+   
     'allauth.account.auth_backends.AuthenticationBackend',
+
 ]
 
 INSTALLED_APPS = [
@@ -43,6 +47,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
+    
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -80,10 +86,22 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
 ]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'github':{
+       'APP': {
+            'client_id': '73bbea69fbe482010a79',
+            'secret': 'dc88930e8ab413009d3420cebf0c705331414456',
+            'key': ''
+        }
+    }
+}
+    
 
 WSGI_APPLICATION = 'deliver.wsgi.application'
 
@@ -143,7 +161,7 @@ MEDIA_URL = '/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-ACCOUNT_ADAPTER = 'restaurant.account_adapter.NoNewUsersAccountAdapter'
+#ACCOUNT_ADAPTER = 'restaurant.account_adapter.NoNewUsersAccountAdapter'
 LOGIN_REDIRECT_URL = 'dashboard'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
