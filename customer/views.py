@@ -6,14 +6,6 @@ from django.core.mail import send_mail
 from .models import MenuItem, Category, OrderModel
 from .MTN_api import PayClass
 
-class Index(View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'customer/index.html')
-
-
-class About(View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'customer/about.html')
 
 
 class Order(View):
@@ -163,3 +155,11 @@ class MenuSearch(View):
         }
 
         return render(request, 'customer/menu.html', context)
+class Index(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'customer/index.html')
+
+
+class About(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'customer/about.html')
