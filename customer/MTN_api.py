@@ -7,7 +7,7 @@ from basicauth import encode
 
 
 class PayClass():
-    # ========================== Variables & Keys
+    #  Variables & Keys
 
     # Collections Subscription Key:
     collections_subkey = "56afae2b936443d7a4c073499ed1f16b"
