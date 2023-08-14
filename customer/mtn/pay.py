@@ -28,11 +28,11 @@ class PayClass():
     disbursements_apiuser = ""
     api_key_disbursements = ""
 
-    # Application mode
-    environment_mode = "sandbox"
-    accurl = "https://proxy.momoapi.mtn.com"
-    if environment_mode == "sandbox":
-        accurl = "https://sandbox.momodeveloper.mtn.com"
+    # # Application mode
+    # environment_mode = "sandbox"
+    # accurl = "https://proxy.momoapi.mtn.com"
+    # if environment_mode == "sandbox":
+    #     accurl = "https://sandbox.momodeveloper.mtn.com"
 
     # Generate Basic authorization key when it test mode
     if environment_mode == "sandbox":
